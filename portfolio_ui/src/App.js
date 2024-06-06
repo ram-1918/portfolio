@@ -1,6 +1,9 @@
+import Home from "./components/Home";
 
-function App() {
-  return 
+export default function App() {
+  return (
+    <div className="h-full font-[sans-serif]">
+      <Home />
+    </div>
+  );
 }
-
-export default App;
