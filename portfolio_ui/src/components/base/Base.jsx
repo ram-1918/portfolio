@@ -1,12 +1,12 @@
-import { faArrowDown, faCopyright } from "@fortawesome/free-solid-svg-icons";
+import { faArrowDown, faCopyright, faDownLong, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const BaseHeader = ({text, type='', icon=''}) => {
     return (
-        <div className={`sticky top-0 w-full p-4 flex flex-row justify-center items-center text-center bg-white z-10`}>
-            <span className="w-[90%] p-2 text-3xl leading-6 tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-sky-500">{icon} {text}</span>
-            <div className="w-[10%]">
-                {type === 'work' && <span className="font-light p-2 w-fit rounded-lg shadow-lg">Resume <FontAwesomeIcon icon={faArrowDown} className="font-light" /> </span>}
+        <div className={`sticky top-0 w-full p-4 flex flex-row justify-end items-center text-center bg-white z-10`}>
+            <span className="w-[50%] float-right p-2 text-3xl leading-6 tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-sky-500">{icon} {text}</span>
+            <div className="w-[25%] text-right">
+                {type === 'work' && <span className="font-light p-2 w-fit rounded-lg shadow-lg">Resume <FontAwesomeIcon icon={faDownload} className="font-light" /> </span>}
             </div>
         </div>
     )
