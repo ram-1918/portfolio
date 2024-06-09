@@ -8,7 +8,7 @@ import Hobbies from "./hobbies/Hobbies";
 
 export default function Home () {
     return (
-      <div className="h-screen">
+      <div className="h-screen select-none">
         <Topnav />
         <About />
         <Experience />

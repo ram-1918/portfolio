@@ -8,7 +8,7 @@ import { GithubIcon, GithubSmallIcon, InstagramIcon, LinkedinIcon } from "../bas
 
 export default function Contact() {
     return (
-        <div className="bg-black text-white w-full pt-10 mt-10 flex flex-col justify-between items-center space-y-10">
+        <div className="bg-black text-white w-full pt-10 flex flex-col justify-between items-center space-y-10">
             <ContactHeader />
             <div className="w-full flex flex-row justify-center items-center space-x-4">
                 <div className="w-[40%]">

@@ -3,11 +3,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const BaseHeader = ({text, type='', icon=''}) => {
     return (
-        <div className={`sticky top-0 w-full p-4 flex flex-row justify-end items-center text-center bg-white z-10`}>
+        // <div className={`sticky top-0 w-full p-5 flex flex-row justify-end items-center text-center bg-black z-20`}>
+        <div className={`w-full p-5 flex flex-row justify-end items-center text-center bg-black`}>
             <span className="w-[50%] float-right p-2 text-3xl leading-6 tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-sky-500">{icon} {text}</span>
             <div className="w-[25%] text-right">
                 {type === 'work' && <span className="font-light p-2 w-fit rounded-lg shadow-lg">Resume <FontAwesomeIcon icon={faDownload} className="font-light" /> </span>}
             </div>
+        </div>
+    )
+}
+
+export const BaseTitleHeader = ({text}) => {
+    return (
+        <div className={`sticky top-0 left-0 w-full p-5 flex flex-row justify-start items-center text-center bg-black z-20`}>
+            <span className="text-2xl font-light leading-6 tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-sky-500">{text}</span>
         </div>
     )
 }
