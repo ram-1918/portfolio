@@ -8,19 +8,19 @@ import { GithubIcon, GithubSmallIcon, InstagramIcon, LinkedinIcon } from "../bas
 
 export default function Contact() {
     return (
-        <div className="bg-black text-white w-full pt-10 flex flex-col justify-between items-center space-y-10">
+        <div className="z-30 flex flex-col items-center justify-between w-full pt-20 space-y-10 text-white bg-black">
             <ContactHeader />
-            <div className="w-full flex flex-row justify-center items-center space-x-4">
+            <div className="flex flex-row items-center justify-center w-full space-x-4">
                 <div className="w-[40%]">
                     <ContactForm />
                 </div>
-                <div className="w-[30%] h-full flex flex-row justify-center items-center space-x-4">
+                <div className="w-[30%] h-full flex flex-row justify-center items-center space-x-4 py-28">
                     <div className={`w-24 h-24 rounded-full bg-profilepicture flex justify-center items-center bg-cover bg-center bg-no-repeat`}></div>
-                    <div className="flex flex-col justify-start items-start space-y-1">
+                    <div className="flex flex-col items-start justify-start space-y-1">
                         <BaseContactSpan text="Edison, NJ" icon={faLocationPin} />
                         <BaseContactSpan text="sravantumu7@gmail.com" icon={faEnvelope} />
                         <BaseContactSpan text="+1 (217) 790-9353" icon={faPhone} />
-                        <div className="flex flex-row justify-start items-center">
+                        <div className="flex flex-row items-center justify-start">
                             <LinkedinIcon name="" />
                             <GithubSmallIcon name="" />
                             <InstagramIcon name="" />
@@ -41,6 +41,6 @@ export const GetInTouchHeader = () => {
 
 const ContactHeader = () => {
     return (
-        <span className="text-white text-4xl font-medium">Get in touch <FontAwesomeIcon icon={faRocket} /></span>
+        <span className="text-4xl font-medium text-white">Get in touch <FontAwesomeIcon icon={faRocket} /></span>
     )
 }

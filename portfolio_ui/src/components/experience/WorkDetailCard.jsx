@@ -23,15 +23,15 @@ export default function WorkDetailCard() {
             <div className={`
             px-4
             `}>
-                <div className="flex flex-row justify-between items-center">
+                <div className="flex flex-row items-center justify-between">
                     <span className="text-xl font-medium">Experience 1</span>
-                    <span className="text-md font-light">September 2021 - Present</span>
+                    <span className="font-light text-md">September 2021 - Present</span>
                 </div>
-                <div className="pb-2 flex flex-row justify-between items-center">
-                    <span className="text-md font-normal">Company Name</span>
-                    <span className="text-md font-light">2 years 9 months</span>
+                <div className="flex flex-row items-center justify-between pb-2">
+                    <span className="font-normal text-md">Company Name</span>
+                    <span className="font-light text-md">2 years 9 months</span>
                 </div>
-                <pre className="w-full border-t py-2 whitespace-pre-line font-sans text-sm">
+                <pre className="w-full py-2 text-sm whitespace-pre-line border-t">
                     {description}
                 </pre>
             </div>

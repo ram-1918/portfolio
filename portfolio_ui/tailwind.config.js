@@ -3,6 +3,9 @@ module.exports = {
   content: ['./src/**/*.{js,jsx}'],
   theme: {
     extend: {
+      fontFamily: {
+        sankofa: ['Jersey 15 Charted', 'Sankofa', 'sans-serif'],
+      },
       backgroundImage: {
         'about_wallpaper': "url('/src/images/about_wallpaper.png')",
         'project1': "url('/src/images/project1.png')",
