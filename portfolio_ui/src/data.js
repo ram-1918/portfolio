@@ -4,7 +4,7 @@ export const colors = {
   main_title: "white",
   text: "rgb(228 228 231)",
   gradient_red_sky:
-    "bg-clip-text text-transparent bg-gradient-to-r from-yellow-200 via-yellow-500 to-yellow-900",
+    "bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-yellow-500 to-yellow-900",
   // gradient_red_sky: "bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-sky-500"
 };
 
