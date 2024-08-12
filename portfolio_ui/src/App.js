@@ -43,7 +43,7 @@ export default function App() {
 
   return (
     <ScreenContext.Provider value={screen}>
-      <div style={{color: colors.text}} className="relative bg-black font-[sans] text-zinc-300">
+      <div style={{color: colors.text}} className="relative bg-[#111827] font-[sans] text-zinc-300">
         <Home />
       </div>
     </ScreenContext.Provider>

@@ -6,60 +6,57 @@ const Animation = () => {
   const svgRef = useRef();
 
   useEffect(() => {
-    // Specify the dimensions of the chart.
-    const width = window.screen.width;
-    const height = window.screen.height;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
 
-    // Specify the color scale.
     const color = d3.scaleOrdinal(d3.schemeCategory10);
 
-    // The force simulation mutates links and nodes, so create a copy
-    // so that re-evaluating this cell produces the same result.
     const links = graphData.links.map(d => ({ ...d }));
     const nodes = graphData.nodes.map(d => ({ ...d }));
 
-    // Create a simulation with several forces.
     const simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links).id(d => d.id))
-      .force("charge", d3.forceManyBody())
-      .force("x", d3.forceX())
-      .force("y", d3.forceY());
+      .force("link", d3.forceLink(links).id(d => d.id).distance(60)) // Set link distance
+      .force("charge", d3.forceManyBody().strength(-30)) // Adjust force strength
+      .force("center", d3.forceCenter(width/2, height/2)) // Center the graph
+      .force("x", d3.forceX().strength(0.1))
+      .force("y", d3.forceY().strength(0.1));
 
-    // Create the SVG container.
     const svg = d3.select(svgRef.current)
-      .attr("width", width)
-      .attr("height", height)
-      .attr("viewBox", [-width/1.2, -height/2, width/1.4, height])
-      .attr("style", "max-width: 100%; height: auto;");
-      
-      // Add a line for each link, and a circle for each node.
+      .attr("width", "100%")
+      .attr("height", "100%")
+      .attr("viewBox", [0, 0, width, height].join(' ')) // Set the viewBox to match screen size
+      .style("position", "absolute")
+      .style("top", 0)
+      .style("left", 0)
+      .style("background-color", "black")
+      .style("margin", 0)
+      .style("padding", 0);
+
     const link = svg.append("g")
-      .attr("stroke", "skyblue")
-      .attr("stroke-opacity", 0.6)
+      .attr("stroke", "grey")
+      .attr("stroke-opacity", 0.9)
       .selectAll("line")
       .data(links)
       .join("line")
       .attr("stroke-width", d => Math.sqrt(d.value));
 
     const node = svg.append("g")
-      .attr("stroke", "red")
-      .attr("stroke-width", 1.5)
+      .attr("stroke", "yellow")
+      .attr("stroke-width", 0.4)
       .selectAll("circle")
       .data(nodes)
       .join("circle")
-      .attr("r", 3)
-      .attr("fill", d => color(d.group));
+      .attr("r", 5) // Increase node radius for better visibility
+      .attr("fill", d => "#fcd34d");
 
     node.append("title")
       .text(d => d.id);
 
-    // Add a drag behavior.
     node.call(d3.drag()
       .on("start", dragstarted)
       .on("drag", dragged)
       .on("end", dragended));
 
-    // Set the position attributes of links and nodes each time the simulation ticks.
     simulation.on("tick", () => {
       link
         .attr("x1", d => d.source.x)
@@ -72,28 +69,23 @@ const Animation = () => {
         .attr("cy", d => d.y);
     });
 
-    // Reheat the simulation when drag starts, and fix the subject position.
     function dragstarted(event) {
       if (!event.active) simulation.alphaTarget(0.3).restart();
       event.subject.fx = event.subject.x;
       event.subject.fy = event.subject.y;
     }
 
-    // Update the subject (dragged node) position during drag.
     function dragged(event) {
       event.subject.fx = event.x;
       event.subject.fy = event.y;
     }
 
-    // Restore the target alpha so the simulation cools after dragging ends.
-    // Unfix the subject position now that it’s no longer being dragged.
     function dragended(event) {
       if (!event.active) simulation.alphaTarget(0);
       event.subject.fx = null;
       event.subject.fy = null;
     }
 
-    // Cleanup on component unmount
     return () => {
       simulation.stop();
     };
